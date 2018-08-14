@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple AJAX - GET REQUEST</title>
+  </head>
+  <body>
+
+    <button onclick="sendRequest()">
+      Send Ajax Request
+    </button>
+
+    <div id="container"></div>
+
+    <script>
+      function sendRequest() {
+
+        var theObject = new XMLHttpRequest();
+        theObject.open('POST', 'backend.php', true);
+        theObject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        theObject.onreadystatechange = function() {
+          if(theObject.readyState === 4 & theObject.status === 200) {
+            document.getElementById('container').innerHTML = theObject.responseText;
+          }
+        }
+
+        theObject.send('username=Fazt&password=secret');
+      }
+    </script>
+  </body>
+</html>
